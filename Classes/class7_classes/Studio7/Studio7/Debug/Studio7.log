@@ -1,0 +1,17 @@
+﻿Build started 2/16/2015 2:22:27 AM.
+     1>Project "C:\Users\Seed\Dropbox\Spring 2015\C++332\Classes\class7\Studio7\Studio7\Studio7.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Visualstudio\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Studio7.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Studio7.cpp test_class.cpp
+         test_class.cpp
+         Studio7.cpp
+         Generating Code...
+       Link:
+         D:\Visualstudio\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Seed\Dropbox\Spring 2015\C++332\Classes\class7\Studio7\Debug\Studio7.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Seed\Dropbox\Spring 2015\C++332\Classes\class7\Studio7\Debug\Studio7.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Seed\Dropbox\Spring 2015\C++332\Classes\class7\Studio7\Debug\Studio7.lib" /MACHINE:X86 Debug\stdafx.obj
+         Debug\Studio7.obj
+         Debug\test_class.obj
+         Studio7.vcxproj -> C:\Users\Seed\Dropbox\Spring 2015\C++332\Classes\class7\Studio7\Debug\Studio7.exe
+     1>Done Building Project "C:\Users\Seed\Dropbox\Spring 2015\C++332\Classes\class7\Studio7\Studio7\Studio7.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.46

@@ -1,0 +1,449 @@
+@Lab 1
+@CSE332
+@Peiyun Zeng
+
+Notes:
+(1) All functions are contained in lab1 since they are not abstract functions that works for other purposes
+(2) two functions (print_vector and naive_print_vector) serve essentially the same purpose to print out all the cards contained in the vector. Print_vector will ouputs the cards
+in a more illustritaive manner while naive_print_vector prints out cards using initial card definition string (as Dr.Gill required)
+(3). Sorthand_vector will also prints out the cards whithin each hand in two manners as described above
+
+
+
+
+I. Design and Method
+
+(1)Pars File
+Use functionint ParseFile_hand(vector<Card> &deck, char * FileName) to implement it. This function is very similar to ParseFile in Lab0. Yet, in order to determine whether each line contains
+correct number of valid card strings (5 in this case), an extra while loop is used to go through each line before we actually start to put valid card string into our deck vector(container)
+
+(2)Recoganize and print out the hand
+Use int hand_vector(const vector<Card>&deck) to implement it. This function will iterate through the passed in vector(deck of cards) with a step of valid_hand_size(5 in this case). Notice that 
+since we are only passing in the vector we created using ParseFile_hand, our indexing will never encounter Error of index overflow.
+
+******************** Begin Mechanism for recognizing hand******************
+in each iteration, hand_vector will create a temp vector called hand_deck to hold current valid_hand_size of cards(5 in this case). Then we sort hand_deck. 
+Now, we will create a frequency table for the sorted hand_deck. In frequency table, each index position check repetitions of its own rank to the right of its position.
+finally we sort the frequency table. Each hand rank has a distinctive frequency table. Based on this, we can determine our rank for hand (except for straight, flush and straight flush)
+Note: 
+(a).frequency count starts at 1 instead of 0
+(b).the frequency table is sorted ascendingly 
+
+One pair: 
+(a) Frequencytalbe[last_index] = 2
+(b) Frequencytable[Secondlast_index]!= 2
+two pairs
+(a) Frequencytalbe[last_index] = 2
+(b) Frequencytable[Secondlast_index]= 2
+
+three of a kind
+(a) Frequencytalbe[last_index] = 3
+(b) Frequencytable[Secondlast_index]= 2
+(c) Frequencytable[thirdlast_index] != 2
+
+Full House
+(a) Frequencytalbe[last_index] = 3
+(b) Frequencytable[Secondlast_index]= 2
+(c) Frequencytable[thirdlast_index] = 2
+
+Four of kind
+(a) Frequencytalbe[last_index] = 4
+
+For straight, we simply iterate through the whole hand_deck to see whether the rank of card at next position = the rank of card at current position +1
+For flush, we simpy iterate through the whole hand_deck to see whether all cards have the same suit
+If a hand_deck statisefies both, it is staright flush
+
+if a hand_deck satisefies none of these above, it is a unranked.
+******************************* End Mechanism for recognizing hand ***************************************
+Using the described mechanism, the function will recognize the hand rank and prints out the corresponding infomation. 
+in my design, i also attached it with the start_index and end_index of the hand in the whole deck when prnting out the hand rank for a certain hand
+
+
+
+(3)**@!!Extra Credit--Sort the hands and print out 
+Utilizes (a) Function sorthand_vector(const vector<Card>&deck)  and (b) Class Hand to complete the task
+
+Hand class is a customized class with two instance variables: (1) hand_rank stores the rank of the hand (2) hand_ stores the actual vector of the corresponding vectors.
+ Hand class also has a operator< overload. This method can comapre two hand objects based on the hand_rank(which is bigger is defined by an enum). When hand_ranks are the same for two objects
+it will implement different comparision for different cases. The detaiils are commented in the code
+
+
+Hand class has a Str() method that returns the string representation of the hand (hand_rank + all cards in the hand)
+another naive_str() method also retunrs the string representation of the hand. the only difference between naive_str() and str() is naive_str() returns orginal card strings instead
+of a more illustrative version (Eg. 7C vs seven of clubs).
+
+(4)Print out the vector in the deck
+(a)naive_print_vector(const vector<Card> & deck) is the same as lab 0
+(b)print_vector(const vector<Card> & deck) is the same as lab 0 except it prints out cards in a more illustrative manner
+
+(5)usage_message(char* filename)
+same as lab0
+
+II. Compiling errors and fixes
+
+No compiliing errors are encountered this time.
+III. Tests 
+
+(1) test for outputs , warnnings and return values (using echo %errorlevel%)
+
+Case#1-- Wrong Number of Arguments
+<1>
+Input File: None
+<2>
+Typed in commandline:
+ "lab1_1.exe"
+<3>
+Program Output:
+usage: lab0_Seed.exe <input_file_name>is incorrect
+plesae enter a valid file name (file must be at the same directory) directly follow the program name using the command line
+for example: lab0_Seed.exe card_file.txt
+
+Calling echo %errorlevel% output:
+2
+
+<4>
+Conclusion:
+
+So the program works as expected. 
+Since we did not put right number of arguments in the command line, we get a useful message teaches us how to use the program
+when the echo %errorlevel% is called, it shows the program returned 2, which is WRONG_NUMBER_ARGUMENT defiend in our enumeration
+***********************************************************************************************************************************************************************
+Case #2 -- ERROR oppneing the file
+
+<1>
+Input File: None
+<2>
+Typed in commandline:
+ "lab1_1.exe Seed"
+<3>
+Program Output:
+ERROR OPENING YOUR FILE BRO
+Warning!!! printing deck: the deck is empty (this is from our warning section, we will discuss later)
+
+Calling echo %errorlevel% output:
+1
+
+Case # 3 -- Successful trial
+
+<1> Input File:
+KD JD 6s 5s 3c // no rank (king high)
+
+6H // not a hand (too few)
+
+Qs QH	 JH Qc Jc // full house
+
+6c 10s 9H  8s  7H // straight
+
+AH Ks Js AD Ac // three of a kind
+
+9D  6D 5D 8D 7D // straight flush
+
+7s 8c 2s 5H 2c // one pair
+     
+Kc 3s 3D 2D 7c 5c  // not a hand (too many)
+
+4s 4H  4D As 4c  // four of a kind
+
+KH   10H 3H 2H 8H // flush
+
+9c QD 10c 10D 9s // two pairs
+
+<2>
+Typed in commandline:
+ "lab1_1.exe hand.txt"
+
+<3> outputs
+Line 2:  Warning!!! This line does not contain correct number of valid card def
+nition strings
+Line 3:  Warning!!! This line does not contain correct number of valid card def
+nition strings
+Line 4:  Warning!!! This line does not contain correct number of valid card def
+nition strings
+Line 6:  Warning!!! This line does not contain correct number of valid card def
+nition strings
+Line 8:  Warning!!! This line does not contain correct number of valid card def
+nition strings
+Line 10:  Warning!!! This line does not contain correct number of valid card de
+inition strings
+Line 12:  Warning!!! This line does not contain correct number of valid card de
+inition strings
+Line 14:  Warning!!! This line does not contain correct number of valid card de
+inition strings
+Line 15:  Warning!!! This line does not contain correct number of valid card de
+inition strings
+Line 16:  Warning!!! This line does not contain correct number of valid card de
+inition strings
+Line 18:  Warning!!! This line does not contain correct number of valid card de
+inition strings
+Line 20:  Warning!!! This line does not contain correct number of valid card de
+inition strings
+the size of the deck is 45
+-------------------------End Parsing File----------------------------
+------------------------Begin Recognizing Hand----------------------
+0 to 4 : No rank. The leading card is: King of Diamonds
+5 to 9 : is a full house
+10 to 14 : is  straight
+15 to 19 : is three of a kind
+20 to 24 : is straight flush
+25 to 29 : is one pair
+30 to 34 : is four of a kind
+35 to 39 : is  flush
+40 to 44 : is two pairs
+----------------------End Recoganizing Hand-------------------------
+------------------------Begin Extra Credit-------------------------
+<----------Printing out the sorted hands in Dr.Gill's way-------->
+This hand is a Straight Flush
+////////////////////////
+5D
+6D
+7D
+8D
+9D
+
+This hand is a Four of a kind
+////////////////////////
+4C
+4D
+4H
+4S
+AS
+
+This hand is a Full House
+////////////////////////
+JC
+JH
+QC
+QH
+QS
+
+This hand is a Flush
+////////////////////////
+2H
+3H
+8H
+10H
+KH
+
+This hand is a Straight
+////////////////////////
+6C
+7H
+8S
+9H
+10S
+
+This hand is a Three of a kind
+////////////////////////
+JS
+KS
+AC
+AD
+AH
+
+This hand is a Two pairs
+////////////////////////
+9C
+9S
+10C
+10D
+QD
+
+This hand is a One Pair
+////////////////////////
+2C
+2S
+5H
+7S
+8C
+
+This hand is a Unranked with leading Card K of D
+////////////////////////
+3C
+5S
+6S
+JD
+KD
+
+<----------Printing out the sorted hands in more illustrative way-------->
+This hand is a Straight Flush
+////////////////////////
+Five of Diamonds
+Six of Diamonds
+Seven of Diamonds
+Eight of Diamonds
+Nine of Diamonds
+
+This hand is a Four of a kind
+////////////////////////
+Four of Clubs
+Four of Diamonds
+Four of Hearts
+Four of Spades
+Ace of Spades
+
+This hand is a Full House
+////////////////////////
+Jack of Clubs
+Jack of Hearts
+Queen of Clubs
+Queen of Hearts
+Queen of Spades
+
+This hand is a Flush
+////////////////////////
+Two of Hearts
+Three of Hearts
+Eight of Hearts
+Ten of Hearts
+King of Hearts
+
+This hand is a Straight
+////////////////////////
+Six of Clubs
+Seven of Hearts
+Eight of Spades
+Nine of Hearts
+Ten of Spades
+
+This hand is a Three of a kind
+////////////////////////
+Jack of Spades
+King of Spades
+Ace of Clubs
+Ace of Diamonds
+Ace of Hearts
+
+This hand is a Two pairs
+////////////////////////
+Nine of Clubs
+Nine of Spades
+Ten of Clubs
+Ten of Diamonds
+Queen of Diamonds
+
+This hand is a One Pair
+////////////////////////
+Two of Clubs
+Two of Spades
+Five of Hearts
+Seven of Spades
+Eight of Clubs
+
+This hand is a Unranked with leading Card King of Diamonds
+////////////////////////
+Three of Clubs
+Five of Spades
+Six of Spades
+Jack of Diamonds
+King of Diamonds
+
+///////////////////////////////////
+Finish Recoganizing hands
+///////////////////////////////////
+-----------------------------End Extra Credit--------------------------
+---------------------Begin Printing out sorted vector----------------------
+******Printing out the sorted vector in DR.Gill's prefered way*********
+This deck contains 45 cards in total
+2C
+2H
+2S
+3C
+3H
+4C
+4D
+4H
+4S
+5D
+5H
+5S
+6C
+6D
+6S
+7D
+7H
+7S
+8C
+8D
+8H
+8S
+9C
+9D
+9H
+9S
+10C
+10D
+10H
+10S
+JC
+JD
+JH
+JS
+QC
+QD
+QH
+QS
+KD
+KH
+KS
+AC
+AD
+AH
+AS
+********Printing out the sorted vector in a more illustritrative way*********
+Card 1:Two of Clubs
+Card 2:Two of Hearts
+Card 3:Two of Spades
+Card 4:Three of Clubs
+Card 5:Three of Hearts
+Card 6:Four of Clubs
+Card 7:Four of Diamonds
+Card 8:Four of Hearts
+Card 9:Four of Spades
+Card 10:Five of Diamonds
+Card 11:Five of Hearts
+Card 12:Five of Spades
+Card 13:Six of Clubs
+Card 14:Six of Diamonds
+Card 15:Six of Spades
+Card 16:Seven of Diamonds
+Card 17:Seven of Hearts
+Card 18:Seven of Spades
+Card 19:Eight of Clubs
+Card 20:Eight of Diamonds
+Card 21:Eight of Hearts
+Card 22:Eight of Spades
+Card 23:Nine of Clubs
+Card 24:Nine of Diamonds
+Card 25:Nine of Hearts
+Card 26:Nine of Spades
+Card 27:Ten of Clubs
+Card 28:Ten of Diamonds
+Card 29:Ten of Hearts
+Card 30:Ten of Spades
+Card 31:Jack of Clubs
+Card 32:Jack of Diamonds
+Card 33:Jack of Hearts
+Card 34:Jack of Spades
+Card 35:Queen of Clubs
+Card 36:Queen of Diamonds
+Card 37:Queen of Hearts
+Card 38:Queen of Spades
+Card 39:King of Diamonds
+Card 40:King of Hearts
+Card 41:King of Spades
+Card 42:Ace of Clubs
+Card 43:Ace of Diamonds
+Card 44:Ace of Hearts
+Card 45:Ace of Spades
+-------------------End Printing out sorted vector-------------------------
+<4> Conlusion
+
+SO it works as expected. it parses the file as expected and outputs correct warnnings as required.
+It then prints out the hands for group of five cards in the deck as required.
+For the extra credit section, it correctly sorts the hands and print them out in two ways (one with Dr.Gill's prefered way, one more illustritative way')
+in the end, it sorts the deck correctly (based on operator < method) and it prints out the whole deck in two ways too (one with Dr.Gill's prefered way, one more illustritative way') 
+Notice that i have two seperate functions to print the vector. One uses more illustritative representation for the card. One strictly follows Dr.Gill's Design this time. Pls donot take points off this time :)
+
+
+
+The return value is 0 which is the same as expected.

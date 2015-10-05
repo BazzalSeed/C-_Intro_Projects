@@ -1,0 +1,15 @@
+﻿Build started 4/24/2015 5:24:50 PM.
+     1>Project "\\warehouse2.seasad.wustl.edu\home\jinglu\My Documents\Visual Studio 2013\Projects\Specialized_libarary_facilities\Specialized_libarary_facilities\Specialized_libarary_facilities.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Specialized_libarary_facilities.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Specialized_libarary_facilities.cpp
+         Specialized_libarary_facilities.cpp
+     1>\\warehouse2.seasad.wustl.edu\home\jinglu\my documents\visual studio 2013\projects\specialized_libarary_facilities\specialized_libarary_facilities\specialized_libarary_facilities.cpp(90): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"\\warehouse2.seasad.wustl.edu\home\jinglu\My Documents\Visual Studio 2013\Projects\Specialized_libarary_facilities\Debug\Specialized_libarary_facilities.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"\\warehouse2.seasad.wustl.edu\home\jinglu\My Documents\Visual Studio 2013\Projects\Specialized_libarary_facilities\Debug\Specialized_libarary_facilities.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"\\warehouse2.seasad.wustl.edu\home\jinglu\My Documents\Visual Studio 2013\Projects\Specialized_libarary_facilities\Debug\Specialized_libarary_facilities.lib" /MACHINE:X86 Debug\Specialized_libarary_facilities.obj
+         Debug\stdafx.obj
+         Specialized_libarary_facilities.vcxproj -> \\warehouse2.seasad.wustl.edu\home\jinglu\My Documents\Visual Studio 2013\Projects\Specialized_libarary_facilities\Debug\Specialized_libarary_facilities.exe
+     1>Done Building Project "\\warehouse2.seasad.wustl.edu\home\jinglu\My Documents\Visual Studio 2013\Projects\Specialized_libarary_facilities\Specialized_libarary_facilities\Specialized_libarary_facilities.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.35

@@ -1,0 +1,21 @@
+﻿Build started 3/24/2015 11:33:13 PM.
+     1>Project "\\warehouse2.seasad.wustl.edu\home\zengpeiyun\my documents\visual studio 2013\Projects\CSE_Copy_Control\CSE_Copy_Control\CSE_Copy_Control.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\CSE_Copy_Control.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CSE_Copy_Control.cpp Detector.cpp Wrapper.cpp
+         CSE_Copy_Control.cpp
+         Generating Code...
+         Compiling...
+         Wrapper.cpp
+         Detector.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"\\warehouse2.seasad.wustl.edu\home\zengpeiyun\my documents\visual studio 2013\Projects\CSE_Copy_Control\Debug\CSE_Copy_Control.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"\\warehouse2.seasad.wustl.edu\home\zengpeiyun\my documents\visual studio 2013\Projects\CSE_Copy_Control\Debug\CSE_Copy_Control.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"\\warehouse2.seasad.wustl.edu\home\zengpeiyun\my documents\visual studio 2013\Projects\CSE_Copy_Control\Debug\CSE_Copy_Control.lib" /MACHINE:X86 Debug\CSE_Copy_Control.obj
+         Debug\Detector.obj
+         Debug\stdafx.obj
+         Debug\Wrapper.obj
+         CSE_Copy_Control.vcxproj -> \\warehouse2.seasad.wustl.edu\home\zengpeiyun\my documents\visual studio 2013\Projects\CSE_Copy_Control\Debug\CSE_Copy_Control.exe
+     1>Done Building Project "\\warehouse2.seasad.wustl.edu\home\zengpeiyun\my documents\visual studio 2013\Projects\CSE_Copy_Control\CSE_Copy_Control\CSE_Copy_Control.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.32
